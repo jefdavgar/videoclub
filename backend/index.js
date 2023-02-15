@@ -7,7 +7,7 @@ const port = 3000
 const movieRoutes = require("./routes/movieRoutes");
 
 const connectionOptions = { useUnifiedTopology: true, useNewUrlParser: true };
-
+app.use(express.json());
 mongoose
   .connect(
     "mongodb+srv://admin:1018@cluster0.iwy5b9d.mongodb.net/videoclub",  // URL de la base de datos

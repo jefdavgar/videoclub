@@ -23,7 +23,7 @@ const ratingSchema = new mongoose.Schema({
 });
 
 const movieSchema = new mongoose.Schema({
-    mov_id: Number,
+    _id: Number,
     mov_title: String,
     mov_year: Number,
     mov_time: Number,
@@ -36,4 +36,5 @@ const movieSchema = new mongoose.Schema({
     ratings: [ratingSchema]
 });
 
-module.exports = mongoose.model("Movie", movieSchema);
+const Movie = mongoose.model("Movie", movieSchema); // añadir nombre del modelo
+module.exports = Movie;

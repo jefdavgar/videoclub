@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
+const cors = require("cors");
 const app = express()
 const port = 3000
 
@@ -8,6 +9,8 @@ const movieRoutes = require("./routes/movieRoutes");
 
 const connectionOptions = { useUnifiedTopology: true, useNewUrlParser: true };
 app.use(express.json());
+app.use(cors());  // Usa CORS para permitir la accesibilidad desde cualquier origen
+
 mongoose
   .connect(
     "mongodb+srv://admin:1018@cluster0.iwy5b9d.mongodb.net/videoclub",  // URL de la base de datos

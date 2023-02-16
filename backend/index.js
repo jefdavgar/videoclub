@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 const cors = require("cors");
-
+const port = 3000
 const app = express();
 
 const movieRoutes = require("./routes/movieRoutes");
@@ -23,7 +23,6 @@ mongoose
 app.use("/movies", movieRoutes);
 
 // Inicia el servidor y muestra un mensaje indicando en qué puerto está escuchando
-const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log("This server is listening on port: " + port);
 });

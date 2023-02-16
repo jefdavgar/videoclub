@@ -4,12 +4,12 @@ import MovieList from "./Components/MovieList";
 import Footer from "./Components/Footer";
 import { useEffect, useState } from "react";
 import movies from "./api/index";
+import axios from "axios";
 
 const title = "VIDEOLOPERS CLUB";
 
 function App() {
   const [movieList, setMovieList] = useState([]);
-
   useEffect(() => {
     async function fetchData() {
       const { data } = await movies.get("/movies");
@@ -31,9 +31,23 @@ function App() {
     });
   };
 
-  const editMovie = async (id, item) => {
-    await movies.put(`/movies/${id}`, item);
-  };
+  const editMovie = (id, updatedItem) => {
+    axios
+      .put(`https://videoclub-3nze.onrender.com/movies/${id}`, updatedItem)
+      .then((response) => {
+        const updatedList = movieList.map((item) => {
+          if (item._id === id) {
+            return response.data;
+          } else {
+            return item;
+          }
+        });
+        setMovieList(updatedList);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
   return (
     <div className="App">
@@ -42,7 +56,7 @@ function App() {
         <MovieAdd addMovie={addMovie} />
       </div>
       <hr />
-      <MovieList editMovieListProp={editMovie} removeMovieListProp={removeMovie} list={movieList} />
+      <MovieList  editMovieListProp={editMovie} removeMovieListProp={removeMovie} list={movieList} />
       <Footer />
     </div>
   );

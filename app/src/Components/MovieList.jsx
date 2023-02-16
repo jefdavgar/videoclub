@@ -1,31 +1,11 @@
-import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Movie from "./Movie";
 import axios from "axios";
 import { Table } from "react-bootstrap";
 
-function MovieList({ list, removeMovieListProp }) {
-  const [movies, setMovies] = useState(list);
+function MovieList({ list, removeMovieListProp, editMovieListProp }) {
 
-  const handleEditMovieItem = (id, updatedItem) => {
-    axios
-      .put(`https://videoclub-3nze.onrender.com/movies/${id}`, updatedItem)
-      .then((response) => {
-        const updatedList = movies.map((item) => {
-          if (item._id === id) {
-            return response.data;
-          } else {
-            return item;
-          }
-        });
-        setMovies(updatedList);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
-  const renderedList = movies.map((item) => (
+  const renderedList = list.map((item) => (
     <Movie
       mov_id={item._id}
       mov_title={item.mov_title}
@@ -41,7 +21,7 @@ function MovieList({ list, removeMovieListProp }) {
           .then(() => removeMovieListProp(item._id))
       }
       editMovieItemProp={(updatedItem) =>
-        handleEditMovieItem(item._id, updatedItem)
+        editMovieListProp(item._id, updatedItem)
       }
       key={item._id}
     />

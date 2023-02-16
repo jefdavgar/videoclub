@@ -3,7 +3,7 @@
   El videoclub es una página web basado en el CRUD (Create, Read, Update, Delete), esta nos permite ver una tabla 
   que contiene un registro de películas existente. Dentro de sus funcionalidades se encuentran el poder agregar, editar o eliminar películas. 
 ### ¿Como instalar? 
-1.  $ git clone ... 
+1.  $ git clone (link del repositorio)
 2.  $ cd videoclub 
 3.  $ npm install 
 4.  $ npm run dev 

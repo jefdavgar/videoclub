@@ -72,10 +72,10 @@ hr{
 /* movielist */
 
 .p-3.rounded{
-  margin: 0 10px 20px 10px;
+  margin: 0 10px 10px 10px;
   background-color: #1F343F;
-  min-height: 85vh;
-  max-height: 85vh;
+  min-height: 90vh;
+  max-height: 90vh;
   overflow: scroll;
   border-radius: 30px !important;
 }
@@ -110,12 +110,12 @@ tr{
 /* footer */
 
 .footer{
-  width: 180%;
+  width: 100%;
   color: white;
   background-color: #1F343F;
   position: relative;
-  left:-40%;
-  bottom:0px;
+  left:0px;
+  bottom:-15px;
   padding: 5px;
 }
 
@@ -134,5 +134,12 @@ tr{
 
   .footer h6{
     font-size: 20px;
+  }
+
+  .footer{
+    width: 180%;
+    position: relative;
+    left:-40%;
+    bottom:0px;
   }
 }
